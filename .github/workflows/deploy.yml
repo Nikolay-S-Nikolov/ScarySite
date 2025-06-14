@@ -1,0 +1,17 @@
+
+name: Main branch CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Render
+        uses: JorgeLNJunior/render-deploy@v1.4.5
+        with:
+          service_id: ${{ secrets.DEPLOY_SERVICE_KEY }}
+          api_key: ${{ secrets.RENDER_API_KEY }}
+          wait_deploy: true
